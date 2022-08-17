@@ -1,8 +1,14 @@
+<<<<<<< HEAD
+=======
+using AutoMapper;
+using DutchTreat.Data;
+>>>>>>> feature/entity-framework-core
 using DutchTreat.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System.Reflection;
 
 namespace DutchTreat
 {
@@ -12,9 +18,28 @@ namespace DutchTreat
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+<<<<<<< HEAD
+=======
+            services.AddDbContext<DutchContext>(options =>
+            options.UseSqlServer(
+                    _config["ConnectionStrings:DutchContextDb"]));
+
+            services.AddTransient<DutchSeeder>();
+
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());
+
+            services.AddScoped<IDutchRepository, DutchRepository>();
+
+>>>>>>> feature/entity-framework-core
             services.AddTransient<IMailService, NullMailService>();
             services.AddControllersWithViews()
+<<<<<<< HEAD
                 .AddRazorRuntimeCompilation();
+=======
+                .AddRazorRuntimeCompilation()
+                .AddNewtonsoftJson(cfg => cfg.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
+>>>>>>> feature/entity-framework-core
             services.AddRazorPages();
         }
 
