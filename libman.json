@@ -242,6 +242,27 @@
         "webfonts/fa-v4compatibility.ttf",
         "webfonts/fa-v4compatibility.woff2"
       ]
+    },
+    {
+      "provider": "unpkg",
+      "library": "fontawesome-free@1.0.4",
+      "destination": "wwwroot/lib/fontawesome-free/",
+      "files": [
+        "js/all.js",
+        "js/all.min.js",
+        "js/brands.js",
+        "js/brands.min.js",
+        "js/conflict-detection.js",
+        "js/conflict-detection.min.js",
+        "js/fontawesome.js",
+        "js/fontawesome.min.js",
+        "js/regular.js",
+        "js/regular.min.js",
+        "js/solid.js",
+        "js/solid.min.js",
+        "js/v4-shims.js",
+        "js/v4-shims.min.js"
+      ]
     }
   ]
 }

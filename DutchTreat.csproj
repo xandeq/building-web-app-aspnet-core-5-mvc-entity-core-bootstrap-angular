@@ -5,7 +5,60 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\ts\main.ts" />
+    <Content Remove="wwwroot\ts\shopper.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="client\src\app\pages\checkout.component.css" />
+    <None Remove="client\src\app\pages\shopPage.component.css" />
+    <None Remove="client\src\app\views\cartView.component.css" />
+    <None Remove="client\src\app\views\productListView.component.css" />
+    <None Remove="gulpfile.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Remove="client\src\app\pages\checkout.component.ts" />
+    <TypeScriptCompile Remove="client\src\app\pages\loginPage.component.ts" />
+    <TypeScriptCompile Remove="client\src\app\pages\shopPage.component.ts" />
+    <TypeScriptCompile Remove="client\src\app\views\cartView.component.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="client\src\app\pages\checkout.component.css">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="client\src\app\pages\shopPage.component.css">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="client\src\app\views\cartView.component.css">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="client\src\app\views\productListView.component.css">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="gulpfile.js">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="client\src\app\pages\checkout.component.ts" />
+    <None Include="client\src\app\pages\loginPage.component.ts" />
+    <None Include="client\src\app\pages\shopPage.component.ts" />
+    <None Include="client\src\app\views\cartView.component.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="3.2.0" />
+    <PackageReference Include="Microsoft.AspNet.Identity.EntityFramework" Version="2.2.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.28" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.28" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.28" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.27" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.28" />
@@ -18,6 +71,23 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="4.7.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <TypeScriptCompile Include="wwwroot\ts\main.ts" />
+    <TypeScriptCompile Include="wwwroot\ts\shopper.ts" />
+  </ItemGroup>
+
+  <Target Name="MyPublishScripts" BeforeTargets="BeforePublish">
+    <Exec Command="npm install"></Exec>
+    <Exec Command="gulp"></Exec>
+    <Exec Command="npm install" WorkingDirectory=".\\client"></Exec>
+    <Exec Command="ng build --prod" WorkingDirectory=".\\client"></Exec>
+  </Target>
+
 </Project>
+
